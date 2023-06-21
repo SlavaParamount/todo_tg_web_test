@@ -26,4 +26,5 @@ urlpatterns = [
     path('api/tasks/', task_list_api),
     path('tasks/update/', update_task, name='update_task'),
     path('delete/<int:task_id>/', delete_task, name='delete_task'),
+    path('logout/', logout_user, name='logout_user'),
 ]

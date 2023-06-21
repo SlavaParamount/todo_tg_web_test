@@ -83,3 +83,7 @@ def delete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id, user=request.user)
     task.delete()
     return redirect('task_list')
+
+def logout_user(request):
+    logout(request)
+    return redirect('login_view')

@@ -7,6 +7,7 @@
 </head>
 <body>
     <h2>Приветствую, {{ name }}</h2>
+    <a href="{% url 'logout_user' %}">Выход</a>
     <h2>Список задач</h2>
     <form id="task-form" method="POST" action="{% url 'task_list' %}">
         {% csrf_token %}
