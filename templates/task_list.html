@@ -12,11 +12,13 @@
         {% csrf_token %}
         <ul id="task-list">
             {% for task in tasks %}
-                <li>
-                    <input type="checkbox" name="task" data-id="{{ task.id }}" {% if task.is_completed %}checked{% endif %}>
-                    {{ task.title }}
-                </li>
-            {% endfor %}
+            <li>
+                <input type="checkbox" name="task" data-id="{{ task.id }}"
+                {% if task.completed %} checked {% endif %}>
+                {{ task.title }}
+                <button type="submit" formaction="{% url 'delete_task' task.id %}">Удалить</button>
+            </li>
+        {% endfor %}
         </ul>
         <button type="submit">Сохранить</button>
     </form>

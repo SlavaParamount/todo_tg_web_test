@@ -11,6 +11,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseBadRequest
 from django.views.decorators.http import require_POST
+from django.shortcuts import get_object_or_404
 
 
 def login_view(request):
@@ -76,3 +77,9 @@ def update_task(request):
         return HttpResponseBadRequest('Invalid task')
 
     return HttpResponse()
+
+@require_POST
+def delete_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    task.delete()
+    return redirect('task_list')
